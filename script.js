@@ -48,7 +48,8 @@ function loadQuestion(index) {
         questionContainer.innerHTML = ''; // Setzt den Inhalt für die aktuelle Frage
 
         const altQuestionContainer = document.createElement('div');
-        altQuestionContainer.innerHTML = `<h3>${multipleChoiceQuestion.frage}</h3>`;
+        altQuestionContainer.classList.add('question-container'); // Füge o clasă pentru stilizare
+        altQuestionContainer.innerHTML = `<h3 class="question-title">${multipleChoiceQuestion.frage}</h3>`; // Stilizează titlul întrebării
 
         // Erstelle die Antwortoptionen
         const optionsHtml = Object.keys(multipleChoiceQuestion.optionen).map((optionKey, index) => {
@@ -79,12 +80,25 @@ function loadQuestion(index) {
     }
 
     // Steuerung der Schaltflächen für vorherige und nächste Frage
-    document.getElementById('prev').classList.toggle('hidden', index === 0);
-    document.getElementById('next').classList.toggle('hidden', index === selectedQuestions.length - 1);
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    
+    if (index === 0) {
+        prevButton.classList.add('hidden');
+    } else {
+        prevButton.classList.remove('hidden');
+    }
+
+    if (index === selectedQuestions.length - 1) {
+        nextButton.classList.add('hidden');
+        document.getElementById('restart').classList.remove('hidden');
+    } else {
+        nextButton.classList.remove('hidden');
+        document.getElementById('restart').classList.add('hidden');
+    }
 }
 
 // ✅ Überprüft die Antwort und aktualisiert die Punktzahl
-// ✅ Überprüft die Antwort und aktualisiert die Punktzahl automatisch
 function checkAnswer() {
     const selectedOption = document.querySelector('.option-radio:checked');
     if (!selectedOption) return;
@@ -114,12 +128,6 @@ function checkAnswer() {
     }
 
     document.getElementById('score').innerText = `Punkte: ${score}`;
-
-    // Wenn wir uns bei der letzten Frage befinden, verstecke den 'next'-Button und zeige den 'restart'-Button
-    if (currentQuestionIndex === selectedQuestions.length - 1) {
-        document.getElementById('next').classList.add('hidden');
-        document.getElementById('restart').classList.remove('hidden');
-    }
 }
 
 // ⏩ Nächste Frage

@@ -16,6 +16,7 @@ body {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 100%; /* Asigură că se ajustează la dimensiunea dispozitivului */
 }
 
 .question {
@@ -26,6 +27,8 @@ body {
 .options {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .option {
@@ -46,6 +49,7 @@ button {
   cursor: pointer;
   margin: 5px;
   font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
 button:disabled {
@@ -60,4 +64,62 @@ button:disabled {
 #result {
   margin-top: 20px;
   font-weight: bold;
+}
+
+#score {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  font-size: 1.2em;
+}
+
+/* Layout pentru butoane */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#check-button {
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 15px;
+  }
+
+  .question {
+    font-size: 1em;
+  }
+
+  .option {
+    font-size: 0.9em;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+
+  #check-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: 1em;
+  }
+
+  .options {
+    align-items: center;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
