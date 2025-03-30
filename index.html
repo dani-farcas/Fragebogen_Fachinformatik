@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fragebogen_Fachinformatik</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Interaktives Quiz</h1>
+      <div id="question-container" class="question">
+        <!-- Die Frage und die Antwortoptionen werden hier geladen -->
+      </div>
+      <div id="buttons-container">
+        <button id="prev" class="hidden" onclick="prevQuestion()">
+          ⏪ Zurück
+        </button>
+        <button id="next" onclick="nextQuestion()">⏩ Weiter</button>
+      </div>
+      <button id="check" onclick="checkAnswer()">✅ Überprüfen</button>
+      <div id="result"></div>
+      <div id="score">Punkte: 0</div>
+      <!-- Der Punktestand wird hier angezeigt -->
+      <button id="restart" onclick="restartQuiz()" class="hidden">
+        Quiz neu starten
+      </button>
+      <!-- Neustart-Button -->
+    </div>
+    <script src="script.js" defer></script>
+  </body>
+</html>
